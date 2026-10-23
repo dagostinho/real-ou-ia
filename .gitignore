@@ -1,0 +1,5 @@
+# arquivos locais, não fazem parte do jogo
+.claude/
+.idea/
+.DS_Store
+ROTEIRO-IMAGENS.md

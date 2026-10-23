@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Real ou IA?">
+  <meta name="theme-color" content="#070b14">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <title>Real ou IA?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+  <button id="mute" class="icon-btn" aria-label="Ligar ou desligar o som">🔊</button>
+
+  <main id="app">
+    <!-- Início -->
+    <section id="screen-start" class="screen active">
+      <p class="eyebrow">// ARFEC · INTELIGÊNCIA ARTIFICIAL</p>
+      <h1 class="title" data-text="REAL ou IA?">REAL <small>ou</small> <span class="ai">IA?</span></h1>
+      <p class="lead">A inteligência artificial já cria imagens incríveis.<br>Será que você consegue perceber a diferença?</p>
+      <p class="author">Feito por André Sabino · 8º ano B</p>
+      <button id="btn-start" class="btn btn-primary">INICIAR</button>
+      <div class="start-footer">
+        <span id="offline-badge" class="offline-badge pending">○ preparando modo offline…</span>
+        <button id="btn-stats" class="link-btn">estatísticas</button>
+      </div>
+    </section>
+
+    <!-- Rodada -->
+    <section id="screen-round" class="screen">
+      <header class="topbar">
+        <button id="btn-quit" class="quit-btn">✕ SAIR</button>
+        <span id="round-label" class="mono"></span>
+        <div class="progress"><div id="progress-bar"></div></div>
+        <span id="score-label" class="mono"></span>
+      </header>
+      <h2 id="prompt" class="prompt"></h2>
+      <div id="stage" class="stage"></div>
+      <div class="footer">
+        <div id="answers" class="answers" hidden>
+          <button class="btn answer" data-answer="real">REAL</button>
+          <button class="btn answer ai" data-answer="ai">FEITA POR IA</button>
+        </div>
+        <div id="feedback" class="feedback" hidden>
+          <div class="feedback-text">
+            <strong id="feedback-title"></strong>
+            <span id="feedback-tip"></span>
+          </div>
+          <button id="btn-next" class="btn btn-primary"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resultado -->
+    <section id="screen-result" class="screen">
+      <p class="eyebrow">// SUA NOTA</p>
+      <div class="score"><span id="result-score">0</span><small>/<span id="result-total"></span></small></div>
+      <div id="pips" class="pips"></div>
+      <h2 id="result-title" class="result-title"></h2>
+      <p id="result-text" class="lead"></p>
+      <p id="result-avg" class="mono avg"></p>
+      <button id="btn-again" class="btn btn-primary">JOGAR DE NOVO</button>
+      <button id="btn-home" class="link-btn">voltar ao início</button>
+      <div class="credits">
+        <p class="author">Feito por André Sabino · 8º ano B</p>
+        <p>Fotos reais: Unsplash e Pexels · Imagens de IA: feitas pelo ChatGPT</p>
+      </div>
+    </section>
+
+    <!-- Estatísticas -->
+    <section id="screen-stats" class="screen">
+      <p class="eyebrow">// ESTATÍSTICAS DESTE IPAD</p>
+      <div class="tiles">
+        <div class="tile"><span id="stat-plays">0</span><small>jogadores</small></div>
+        <div class="tile"><span id="stat-avg">–</span><small>média de acertos</small></div>
+        <div class="tile"><span id="stat-best">–</span><small>melhor nota</small></div>
+      </div>
+      <button id="btn-stats-back" class="btn btn-primary">VOLTAR</button>
+      <button id="btn-stats-reset" class="link-btn">zerar estatísticas</button>
+    </section>
+  </main>
+
+  <!-- Confirmação ao sair no meio da partida -->
+  <div id="modal-quit" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-quit-title">
+      <h2 id="modal-quit-title">Quer mesmo sair?</h2>
+      <p>Se sair agora, a partida atual será perdida.</p>
+      <div class="modal-actions">
+        <button id="btn-quit-stay" class="btn">CONTINUAR JOGANDO</button>
+        <button id="btn-quit-confirm" class="btn btn-danger">SIM, SAIR</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
